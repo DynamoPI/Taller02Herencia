@@ -1,0 +1,36 @@
+﻿namespace GeometricFigures.Backend
+{
+    public class Square : GeometricFigure
+    {
+        //Fields
+
+        private double _a = 0;
+
+        //Properties
+
+        public double A
+        {
+            get => _a;
+            set => _a = ValidateA(value);
+        }
+
+        //Constructor
+
+        public Square(string name, double a) : base(name) => A = a;
+
+        //Methods
+
+        public override double GetArea() => A * A;
+
+        public override double GetPerimeter() => 4 * A;
+
+        private double ValidateA(double a)
+        {
+            if (a <= 0)
+            {
+                throw new ArgumentException($"The side: {a}, is not valid.");
+            }
+            return a;
+        }
+    }
+}
